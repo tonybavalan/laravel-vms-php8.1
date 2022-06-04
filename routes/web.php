@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Auth\SessionController;
@@ -32,15 +33,25 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('settings/departments', [SettingController::class, 'indexDepartment'])->name('department');
-    Route::post('settings/departments', [SettingController::class, 'storeDepartment']);
-    Route::get('settings/roles', [SettingController::class, 'indexRole'])->name('role');
-    Route::post('settings/roles', [SettingController::class, 'storeRole']);
+    Route::prefix('employees')->name('employees.')->group(function () {
+        Route::get('index', [EmployeeController::class, 'indexEmployees'])->name('index');
+        Route::get('create', [EmployeeController::class, 'indexAddEmployees'])->name('create');    
+        Route::post('store', [EmployeeController::class, 'store']);
+        Route::get('employees/index/{id}', [EmployeeController::class, 'show'])->name('show');
+    });
 
-    Route::get('employees/index', [EmployeeController::class, 'indexEmployees'])->name('employees.list');
-    Route::get('employees/create', [EmployeeController::class, 'indexAddEmployees'])->name('employees.add');    
-    Route::post('employees/create', [EmployeeController::class, 'store']);
-    Route::get('employees/index/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+    Route::prefix('settings')->group(function () {
+        Route::get('departments', [SettingController::class, 'indexDepartment'])->name('department');
+        Route::post('departments', [SettingController::class, 'storeDepartment']);
+        Route::get('roles', [SettingController::class, 'indexRole'])->name('role');
+        Route::post('roles', [SettingController::class, 'storeRole']);
+    });
+
+    Route::prefix('sites')->name('sites.')->group(function () {
+        Route::get('index', [SiteController::class, 'index'])->name('index');
+        Route::get('create', [SiteController::class, 'create'])->name('create');    
+        Route::post('store', [SiteController::class, 'store']);
+    });
 
     Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
     
