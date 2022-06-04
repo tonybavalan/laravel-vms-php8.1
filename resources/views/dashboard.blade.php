@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@title('title', 'VMS')
-
 @section('content')
 	<!--start page wrapper -->
 	<div class="page-wrapper">

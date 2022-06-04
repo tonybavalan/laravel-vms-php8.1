@@ -39,9 +39,9 @@
                     <div class="menu-title">User</div>
                 </a>
                 <ul>
-                    <li> <a href="{{ route('employees.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Employee</a>
+                    <li> <a href="{{ route('employees.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Employee</a>
                     </li>
-                    <li> <a href="{{ route('employees.list') }}"><i class="bx bx-right-arrow-alt"></i>View Employee</a>
+                    <li> <a href="{{ route('employees.index') }}"><i class="bx bx-right-arrow-alt"></i>View Employee</a>
                     </li>
                 </ul>
             </li>
@@ -52,9 +52,9 @@
                     <div class="menu-title">Sites</div>
                 </a>
                 <ul>
-                    <li> <a href="add-site.html"><i class="bx bx-right-arrow-alt"></i>Add Site</a>
+                    <li> <a href="{{ route('sites.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Site</a>
                     </li>
-                    <li> <a href="list-site.html"><i class="bx bx-right-arrow-alt"></i>View Sites</a>
+                    <li> <a href="{{ route('sites.index') }}"><i class="bx bx-right-arrow-alt"></i>View Sites</a>
                     </li>
                     <li> <a href="site-allocation.html"><i class="bx bx-right-arrow-alt"></i>Site Allocation</a>
                     </li>
