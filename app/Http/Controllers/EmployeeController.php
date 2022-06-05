@@ -13,17 +13,18 @@ class EmployeeController extends Controller
      * Display the employee index page for the user.
      *
      */
-    public function indexEmployees()
+    public function index()
     {
         $employees = Employee::with(['department', 'role'])->get();
         return view('employees.index', compact('employees'));
     }
 
     /**
-     * Display the employee index page for the user.
+     * Show the form for creating a new resource.
      *
+     * @return \Illuminate\Http\Response
      */
-    public function indexAddEmployees()
+    public function create()
     {
         $departments = Department::all();
         $roles = Role::all();

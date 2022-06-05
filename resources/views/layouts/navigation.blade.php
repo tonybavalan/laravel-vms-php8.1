@@ -56,7 +56,7 @@
                     </li>
                     <li> <a href="{{ route('sites.index') }}"><i class="bx bx-right-arrow-alt"></i>View Sites</a>
                     </li>
-                    <li> <a href="site-allocation.html"><i class="bx bx-right-arrow-alt"></i>Site Allocation</a>
+                    <li> <a href="{{ route('sites.allocate') }}"><i class="bx bx-right-arrow-alt"></i>Site Allocation</a>
                     </li>
                 </ul>
             </li>

@@ -17,12 +17,4 @@ class Department extends Model
     protected $fillable = [
         'name', 'created_by', 'updated_by',
     ];
-
-    /**
-     * Get the employee for the department.
-     */
-    public function employee()
-    {
-        return $this->hasMany(Employee::class);
-    }
 }

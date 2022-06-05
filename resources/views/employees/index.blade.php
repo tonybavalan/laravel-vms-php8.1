@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@title('title', 'VMS')
+@section('title', 'Employees')
 
 @section('content')
 	<!--start page wrapper -->
@@ -44,7 +44,7 @@
 							<tbody>
 								@foreach($employees as $employee)
 								<tr>
-									<td><img src="{{ asset($employee->avatar) }}" width="50" height="50" class="rounded-circle" alt="" /></td>
+									<td><img src="{{ asset($employee->avatar) }}" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/></td>
 									<td>{{ $employee->name }}</td>
 									<td>{{ $employee->ic_number }}</td>
 									<td>{{ $employee->phno }}</td>

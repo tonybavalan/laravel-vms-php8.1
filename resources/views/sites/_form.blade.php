@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Sites')
+
 @section('content')
 <!--start page wrapper -->
 <div class="page-wrapper">
@@ -26,7 +28,7 @@
 				<div class="card border-top border-0 border-4 border-primary">
 					<div class="card-body">
 						<div class="p-4 border rounded">
-							<form class="row g-3 needs-validation" method="post" novalidate>
+							<form class="row g-3 needs-validation" method="post" action="{{ route('sites.store') }}" novalidate>
 								@csrf
 								<label for="validationCustom01" class="form-label">Site Image</label>
 								<div class="col-md-6 input-group mb-3">
@@ -35,7 +37,7 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Site Name</label>
-									<input type="text" class="form-control" id="validationCustom01" value="" name="site_name" required>
+									<input type="text" class="form-control" id="validationCustom01" value="" name="name" required>
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom04" class="form-label">Postalcode</label>

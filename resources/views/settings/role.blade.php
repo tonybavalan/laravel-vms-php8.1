@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Roles')
+
 @section('content')
 	<!--start page wrapper -->
 	<div class="page-wrapper">

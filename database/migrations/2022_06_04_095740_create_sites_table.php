@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
-            $table->string('site_name');
+            $table->string('avatar',300)->nullable();
+            $table->string('name');
             $table->string('postal_code');
-            $table->string('mcst_number');
+            $table->string('mcst_number')->unique();
             $table->string('ma_name');
-            $table->string('ma_contact_number');
-            $table->string('ma_contact_email');
+            $table->string('ma_contact_number')->unique();
+            $table->string('ma_contact_email')->unique();
             $table->string('company_name');
             $table->enum('shift_type', [1,2,3]); //1 => Day, 2 => Night, 2 => Dynamic
             $table->unsignedBigInteger('created_by');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@title('title', 'VMS')
+@section('title', 'Departments')
 
 @section('content')	
 	<!--start page wrapper -->
