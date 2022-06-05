@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\Site;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -18,17 +20,6 @@ class SiteController extends Controller
         return view('sites.index', compact('sites'));
     }
 
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexAllocate()
-    {
-        $sites = Site::all();
-        return view('sites.allocate', compact('sites'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,6 +28,19 @@ class SiteController extends Controller
     public function create()
     {
         return view('sites._form');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     *  @param  App\Models\Role  $role
+     * @return \Illuminate\Http\Response
+     */
+    public function createAllocate(Role $role)
+    {
+        $managers = $role->find(1)->employees()->get();
+        $sites = Site::all();
+        return view('sites.allocate_form', compact('managers', 'sites'));
     }
 
     /**

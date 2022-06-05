@@ -25,13 +25,13 @@ class Employee extends Model
      * Get the department for the employee.
      */
     public function department() {
-        return $this->belongsTo(Department::class, 'id');
+        return $this->belongsTo(Department::class);
     }
 
     /**
      * Get the role for the employee.
      */
     public function role() {
-        return $this->hasOne(Role::class, 'id');
+        return $this->belongsTo(Role::class);
     }
 }

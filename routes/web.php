@@ -34,9 +34,9 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::prefix('employees')->name('employees.')->group(function () {
-        Route::get('index', [EmployeeController::class, 'indexEmployees'])->name('index');
-        Route::get('create', [EmployeeController::class, 'indexAddEmployees'])->name('create');    
-        Route::post('store', [EmployeeController::class, 'store']);
+        Route::get('index', [EmployeeController::class, 'index'])->name('index');
+        Route::get('create', [EmployeeController::class, 'create'])->name('create');    
+        Route::post('store', [EmployeeController::class, 'store'])->name('store');
         Route::get('employees/index/{id}', [EmployeeController::class, 'show'])->name('show');
     });
 
@@ -50,7 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('sites')->name('sites.')->group(function () {
         Route::get('index', [SiteController::class, 'index'])->name('index');
         Route::get('create', [SiteController::class, 'create'])->name('create');    
-        Route::post('store', [SiteController::class, 'store']);
+        Route::post('store', [SiteController::class, 'store'])->name('store');
+        Route::get('allocate', [SiteController::class, 'createAllocate'])->name('allocate');
     });
 
     Route::post('logout', [SessionController::class, 'destroy'])->name('logout');

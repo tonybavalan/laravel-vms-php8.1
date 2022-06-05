@@ -19,10 +19,10 @@ class Role extends Model
     ];
 
     /**
-     * Get the role for the employee.
+     * Get the role for the employees.
      */
-    public function employee()
+    public function employees()
     {
-        return $this->belongsTo(Employee::class, 'role_id');
+        return $this->hasMany(Employee::class);
     }
 }

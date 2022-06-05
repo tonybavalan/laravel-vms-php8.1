@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Employees')
+
 @section('content')	
 <!--start page wrapper -->
 <div class="page-wrapper">
@@ -26,7 +28,7 @@
 				<div class="card border-top border-0 border-4 border-primary">
 					<div class="card-body">
 						<div class="p-4 border rounded">
-							<form class="row g-3 needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+							<form class="row g-3 needs-validation" action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data" novalidate>
 								@csrf
 								<label for="validationCustom01" class="form-label">Photo</label>
 								<div class="col-md-6 input-group mb-3">

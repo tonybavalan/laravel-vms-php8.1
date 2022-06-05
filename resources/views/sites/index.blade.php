@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Sites')
+
 @section('content')
 	<!--start page wrapper -->
 	<div class="page-wrapper">
@@ -41,13 +43,15 @@
 							<tbody>
 							@foreach($sites as $site)
 								<tr>
-									<td><img src="{{ asset('assets/images/sites/beaverton.jpg') }}" width="50" height="50" class="rounded-circle" alt="" /></td>
-									<td>{{ $site->site_name }}</td>
+									<td><img src="{{ asset($site->avatar) }}" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/></td>
+									<td>{{ $site->name }}</td>
 									<td>{{ $site->postal_code }}</td>
 									<td>{{ $site->mcst_number }}</td>
 									<td>{{ $site->ma_name }}</td>
-									<td>{{ $site->ma_contact_number }} <br/>
-									{{ $site->ma_contact_email }}</td>
+									<td>{{ $site->ma_contact_number }} 
+										<br/>
+										{{ $site->ma_contact_email }}
+									</td>
 									@if($site->shift_type =='1')
 										<td>Day</td>
 									@elseif($site->shift_type =='2')
