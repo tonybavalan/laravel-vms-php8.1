@@ -40,6 +40,7 @@
         @include('layouts.header')
         @include('layouts.navigation')
         @yield('content')
+        @include('layouts.overlay-footer')
     </div>
 	<!--end wrapper-->
         
