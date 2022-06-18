@@ -51,7 +51,8 @@ Route::middleware('auth')->group(function () {
         Route::get('index', [SiteController::class, 'index'])->name('index');
         Route::get('create', [SiteController::class, 'create'])->name('create');    
         Route::post('store', [SiteController::class, 'store'])->name('store');
-        Route::get('allocate', [SiteController::class, 'createAllocate'])->name('allocate');
+        Route::get('allocate', [SiteController::class, 'createAllocation'])->name('allocate');
+        Route::post('allocate', [SiteController::class, 'storeAllocation']);
     });
 
     Route::post('logout', [SessionController::class, 'destroy'])->name('logout');
