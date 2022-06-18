@@ -33,12 +33,12 @@
 									@foreach($managers as $manager)
 										<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 											<h6 class="mb-0">
-												<img src="assets/images/avatars/avatar-1.png" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/>
-												{{$manager->name}}
+												<img src="{{ asset($manager->avatar) }}" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/>
+												{{ $manager->name }}
 											</h6>
 											<span class="text-secondary">
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="staff">
+													<input class="form-check-input" type="radio" name="manager_id" id="inlineRadio1" value="{{ $manager->id }}">
 												</div>
 											</span>
 										</li>
@@ -55,12 +55,12 @@
 									@foreach($sites as $site)
 										<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 											<h6 class="mb-0">
-												<img src="assets/images/sites/beaverton.jpg" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/>
-												Beaverton Court
+												<img src="{{ asset($site->avatar) }}" width="50" height="50" class="rounded-circle" alt="" onerror="this.src='{{ asset('assets/images/sites/beaverton.jpg') }}'"/>
+												{{ $site->name }}
 											</h6>
 											<span class="text-secondary">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+													<input class="form-check-input" type="checkbox" name="site_id" id="flexCheckDefault1" value="{{ $site->id }}">
 												</div>
 											</span>
 										</li>
@@ -84,15 +84,39 @@
 		</div>
 	</div>
 	<!--end page wrapper -->
-	<!--start overlay-->
-	<div class="overlay toggle-icon"></div>
-	<!--end overlay-->
-	<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-	<!--End Back To Top Button-->
-	<footer class="page-footer">
-		<p class="mb-0">Copyright © 2022. All right reserved.</p>
-	</footer>
 @endsection
 
 @pushOnce('scripts')
+<script>
+
+  $(".success").click(function(event){
+      event.preventDefault();
+
+      let manager_id = $("input[name=manager_id]:checked").val();
+      let site_id = $("input[name:site_id]:checkbox:checked").val();
+      let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      $.ajax({
+        url: "/allocate",
+        type: "POST",
+        data:{
+          	employee_id:manager_id,
+          	sites_id:site_id,
+          	_token: _token
+        },
+        success:function(response){
+          	console.log(response);
+          	if(response) {
+				alert(site allocated to employee successfully);
+            	// $('.success').text(response.success);
+            	// $("#ajaxform")[0].reset();
+          	}
+        },
+        error: function(error) {
+         	console.log(error);
+        }
+       });
+    });
+
+</script>
 @endpushOnce
