@@ -93,21 +93,25 @@
       event.preventDefault();
 
       let manager_id = $("input[name=manager_id]:checked").val();
-      let site_id = $("input[name:site_id]:checkbox:checked").val();
-      let _token   = $('meta[name="csrf-token"]').attr('content');
+
+	  const site_id = [];
+
+	  $("input:checkbox[name=site_id]:checked").each(function(){
+			site_id.push($(this).val());
+		});
 
       $.ajax({
-        url: "/allocate",
+        url: "{{ route('sites.allocate') }}",
         type: "POST",
         data:{
           	employee_id:manager_id,
           	sites_id:site_id,
-          	_token: _token
+          	_token: "{{ csrf_token() }}"
         },
         success:function(response){
           	console.log(response);
           	if(response) {
-				alert(site allocated to employee successfully);
+				alert("sites allocated to employee successfully");
             	// $('.success').text(response.success);
             	// $("#ajaxform")[0].reset();
           	}
