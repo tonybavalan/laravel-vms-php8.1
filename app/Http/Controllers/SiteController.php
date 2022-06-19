@@ -48,6 +48,24 @@ class SiteController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeAllocation(Request $request)
+    {
+        $data['employee_id'] = $request->employee_id;
+        $data['sites_id'] = implode(',', $request->sites_id);
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+
+        EmployeeSite::create($data);
+
+        return redirect()->back();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Site  $site

@@ -94,11 +94,11 @@
 
       let manager_id = $("input[name=manager_id]:checked").val();
 
-	  const site_id = [];
+	    const site_id = [];
 
-	  $("input:checkbox[name=site_id]:checked").each(function(){
-			site_id.push($(this).val());
-		});
+      $("input:checkbox[name=site_id]:checked").each(function(){
+        site_id.push($(this).val());
+      });
 
       $.ajax({
         url: "{{ route('sites.allocate') }}",
@@ -111,7 +111,7 @@
         success:function(response){
           	console.log(response);
           	if(response) {
-				alert("sites allocated to employee successfully");
+				      alert("sites allocated to employee successfully");
             	// $('.success').text(response.success);
             	// $("#ajaxform")[0].reset();
           	}
